@@ -214,7 +214,6 @@ public class MapGraph {
 	}
 	
 	/** Reconstruct a path from start to goal using the parentMap
-	 *
 	 * @param parentMap the HashNode map of children and their parents
 	 * @param start The starting location
 	 * @param goal The goal location
@@ -296,7 +295,7 @@ public class MapGraph {
 	private HashMap<MapNode, Double> getEdgeDistance(MapNode curr) {
 		HashMap<MapNode, Double> distancesMap = new HashMap<>();
 		for (MapEdge ed : curr.getEdges()) {
-			distancesMap.put(ed.getEndNode(), ed.getLength());
+			distancesMap.put(ed.getEndNode(), ed.getRoadDuration());
 		}
 		return distancesMap;
 	}
@@ -411,7 +410,7 @@ public class MapGraph {
 
 	//Get straightline distance to goal
 	private double getStraightLineDistance(MapNode curr,MapNode goal){
-		return curr.getLocation().distance(goal.getLocation());
+		return (curr.getLocation().distance(goal.getLocation())/20);
 	}
 	
 	//Comparator for aStar
